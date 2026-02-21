@@ -1,0 +1,17 @@
+version: "3"
+
+tasks:
+  check:
+    cmds:
+      - cargo check --all-features
+      - >-
+        cargo clippy --all-features --
+        -A clippy::blanket_clippy_restriction_lints
+        -A clippy::missing_inline_in_public_items
+        -D warnings -D missing-docs -D clippy::todo
+      - cargo +nightly fmt --check
+
+  fix:
+    cmds:
+      - cargo +nightly fmt
+      - cargo fix

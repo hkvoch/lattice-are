@@ -1,0 +1,73 @@
+[workspace]
+members = ["packages/*"]
+resolver = "3"
+
+[workspace.package]
+authors = ["Honza Kvoch <kvochj@gmail.com>"]
+categories = [
+	"authentication",
+	"compilers",
+	"command-line-utilities",
+	"parser-implementations",
+	"web-programming",
+]
+edition = "2024"
+homepage = "https://github.com/hkvoch/lattice-are"
+keywords = ["lattice", "access", "security", "policy"]
+license = "MIT OR Apache-2.0"
+publish = true
+readme = "README.md"
+repository = "https://github.com/hkvoch/lattice-are"
+rust-version = "1.93"
+version = "0.1.0"
+
+[workspace.dependencies]
+
+[workspace.lints.rust]
+unused = "warn"
+
+future-incompatible = { priority = 1, level = "deny" }
+keyword-idents = { priority = 1, level = "deny" }
+let-underscore = { priority = 1, level = "deny" }
+nonstandard-style = { priority = 1, level = "deny" }
+refining-impl-trait = { priority = 1, level = "deny" }
+unknown-or-malformed-diagnostic-attributes = { priority = 1, level = "deny" }
+
+[workspace.lints.clippy]
+pedantic = "deny"
+restriction = "deny"
+
+# from clippy::restriction
+field-scoped-visibility-modifiers = { priority = 1, level = "allow" }
+implicit-return = { priority = 1, level = "allow" }
+map-unwrap-or = { priority = 1, level = "warn" }
+missing-docs-in-private-items = { priority = 1, level = "allow" }
+missing-inline-in-public-items = { priority = 1, level = "warn" }
+must-use-candidate = { priority = 1, level = "warn" }
+pattern-type-mismatch = { priority = 1, level = "allow" }
+same-name-method = { priority = 1, level = "allow" }
+arbitrary-source-item-ordering = { priority = 1, level = "warn" }
+std-instead-of-core = { priority = 1, level = "warn" }
+inconsistent-struct-constructor = { priority = 1, level = "warn" }
+pub-use = { priority = 1, level = "allow" }
+pub-with-shorthand = { priority = 1, level = "allow" }
+useless-attribute = { priority = 1, level = "warn" }
+allow-attributes-without-reason = { priority = 1, level = "warn" }
+exhaustive-enums = { priority = 1, level = "warn" }
+exhaustive-structs = { priority = 1, level = "warn" }
+match-same-arms = { priority = 1, level = "warn" }
+empty-structs-with-brackets = { priority = 1, level = "warn" }
+unused-trait-names = { priority = 1, level = "warn" }
+error-impl-error = { priority = 1, level = "allow" }
+needless-pass-by-value = { priority = 1, level = "warn" }
+missing-errors-doc = { priority = 1, level = "warn" }
+missing-panic-doc = { priority = 1, level = "warn" }
+single-call-fn = { priority = 1, level = "warn" }
+shadow-reuse = { priority = 1, level = "allow" }
+
+# test exceptions
+unwrap-used = { priority = 2, level = "allow", check-cfg = ["cfg(test)"] }
+panic = { priority = 2, level = "allow", check-cfg = ["cfg(test)"] }
+
+# make development bearable
+todo = { priority = 3, level = "allow" }
